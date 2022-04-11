@@ -1,1 +1,11 @@
-
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite::resource:sample.db
+    username: ''
+    password: ''
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: com.ktxdev.phonenumbersexercise.dialect.SQLiteDialect

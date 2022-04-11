@@ -1,4 +1,4 @@
-package com.example.phonenumbersexercise;
+package com.ktxdev.phonenumbersexercise;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
