@@ -17,7 +17,7 @@ public class CountryRestController {
     private final CountryService countryService;
 
     @GetMapping
-    public List<Country> findAll() {
-        return countryService.findAll();
+    public List<Country> getAllCountries() {
+        return countryService.getAllCountries();
     }
 }

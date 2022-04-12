@@ -5,7 +5,7 @@ import com.ktxdev.phonenumbersexercise.models.Country;
 import java.util.List;
 
 public interface CountryService {
-    List<Country> findAll();
+    List<Country> getAllCountries();
 
     boolean isValidPhoneNumber(String countryCode, String phone);
 }

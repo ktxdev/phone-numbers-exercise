@@ -19,11 +19,11 @@ public class CountriesDBInitializingBean implements InitializingBean {
     @Override
     public void afterPropertiesSet() {
         List<Country> countries = new ArrayList<>(Arrays.asList(
-                new Country("+237", "Cameroon", "\\(237\\)\\?[2368]\\d{7,8}$"),
-                new Country("+251", "Ethiopia", "\\(251\\)\\?[1-59]\\d{8}$"),
-                new Country("+212", "Morocco", "\\(212\\)\\?[5-9]\\d{8}$"),
-                new Country("+258", "Mozambique", "\\(258\\)\\?[28]\\d{7,8}$"),
-                new Country("+256", "Uganda", "\\(256\\)\\?\\d{9}$")
+                new Country("+237", "Cameroon", "\\(237\\)\\ ?[2368]\\d{7,8}$"),
+                new Country("+251", "Ethiopia", "\\(251\\)\\ ?[1-59]\\d{8}$"),
+                new Country("+212", "Morocco", "\\(212\\)\\ ?[5-9]\\d{8}$"),
+                new Country("+258", "Mozambique", "\\(258\\)\\ ?[28]\\d{7,8}$"),
+                new Country("+256", "Uganda", "\\(256\\)\\ ?\\d{9}$")
         ));
 
         countries.forEach(country -> {
