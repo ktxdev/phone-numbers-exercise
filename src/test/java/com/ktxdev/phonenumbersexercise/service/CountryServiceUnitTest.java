@@ -1,28 +1,24 @@
-package com.ktxdev.phonenumbersexercise.service.impl;
+package com.ktxdev.phonenumbersexercise.service;
 
 import com.ktxdev.phonenumbersexercise.dao.CountryDao;
 import com.ktxdev.phonenumbersexercise.exceptions.ResourceNotFoundException;
 import com.ktxdev.phonenumbersexercise.models.Country;
-import com.ktxdev.phonenumbersexercise.service.CountryService;
-import org.junit.jupiter.api.AfterEach;
+import com.ktxdev.phonenumbersexercise.service.impl.CountryServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CountryServiceTest {
+class CountryServiceUnitTest {
 
     @Mock
     private CountryDao countryDao;

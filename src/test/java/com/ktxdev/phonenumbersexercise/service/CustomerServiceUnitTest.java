@@ -1,27 +1,24 @@
-package com.ktxdev.phonenumbersexercise.service.impl;
+package com.ktxdev.phonenumbersexercise.service;
 
 import com.ktxdev.phonenumbersexercise.dao.CustomerDao;
 import com.ktxdev.phonenumbersexercise.models.Customer;
 import com.ktxdev.phonenumbersexercise.models.PhoneState;
-import com.ktxdev.phonenumbersexercise.service.CountryService;
-import com.ktxdev.phonenumbersexercise.service.CustomerService;
+import com.ktxdev.phonenumbersexercise.service.impl.CustomerServiceImpl;
 import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CustomerServiceTest {
+class CustomerServiceUnitTest {
 
     @Mock
     private CountryService countryService;
