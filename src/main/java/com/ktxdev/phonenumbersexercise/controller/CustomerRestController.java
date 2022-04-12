@@ -4,9 +4,6 @@ import com.ktxdev.phonenumbersexercise.models.Customer;
 import com.ktxdev.phonenumbersexercise.models.PhoneState;
 import com.ktxdev.phonenumbersexercise.service.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +22,7 @@ public class CustomerRestController {
             @RequestParam(required = false,  defaultValue = "") String countryCode,
             @RequestParam(required = false, defaultValue = "") String phone
     ) {
-        return customerService.findAll(country, countryCode, state, phone);
+        return customerService.getAllCustomers(country, countryCode, state, phone);
     }
 
 

@@ -24,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final CountryService countryService;
 
     @Override
-    public List<Customer> findAll(
+    public List<Customer> getAllCustomers(
             String country,
             String countryCode,
             PhoneState state,
