@@ -4,7 +4,7 @@ import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField
 import { Box } from '@mui/system';
 import { getAllCountries } from '../api/lib/country';
 
-const Filter = () => {
+const Filter = ({onFilter}) => {
 
     useEffect(() => {
         fetchAllCountries();
@@ -13,13 +13,14 @@ const Filter = () => {
     const [countries, setCountries] = useState([])
 
     const [filters, setFilters] = useState({
-        country: 'ALL',
+        countryCode: 'ALL',
         state: 'ALL',
-        searchQuery: ''
+        phone: ''
     })
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        console.log(name + ": " + value);
         setFilters({...filters, [name]: value})
     }
 
@@ -30,6 +31,11 @@ const Filter = () => {
         }
     }
 
+    const handleSearch = () => {
+        const countryCode = filters.countryCode === 'ALL' ? '': filters.countryCode;
+        onFilter({...filters, countryCode});
+    }
+
     return (
         <Container maxWidth="xl">
             <Box sx={{ my: 5, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
@@ -38,15 +44,15 @@ const Filter = () => {
                     <Select
                         labelId="country-select-label"
                         id="country-select"
-                        value={filters.country}
+                        value={filters.countryCode}
                         label="Country"
-                        name='country'
+                        name='countryCode'
                         size='small'
                         onChange={handleChange}
                     >
                         <MenuItem value={"ALL"}>All Countries</MenuItem>
                         {
-                            countries.map(c => <MenuItem key={c.code} value={c.name}>{c.name}</MenuItem>)
+                            countries.map(c => <MenuItem key={c.code} value={c.code}>{c.name}</MenuItem>)
                         }
                     </Select>
                 </FormControl>
@@ -70,17 +76,17 @@ const Filter = () => {
 
                 <FormControl fullWidth>
                     <TextField 
-                        id="search-query" 
+                        id="phone" 
                         size='small'
-                        name='searchQuery' 
-                        value={filters.searchQuery}
+                        name='phone' 
+                        value={filters.phone}
                         onChange={handleChange} 
-                        label="Search By Country Code or Phone Number" 
+                        label="Search By Phone Number" 
                         variant="outlined" />
                 </FormControl>
 
                 <Box sx={{ flexShrink: 0 }}>
-                    <Button variant="contained" startIcon={<Search />}>Search</Button>
+                    <Button onClick={handleSearch} variant="contained" startIcon={<Search />}>Search</Button>
                 </Box>
             </Box>
         </Container>
