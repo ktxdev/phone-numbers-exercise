@@ -1,0 +1,24 @@
+version: "3.0"
+services:
+  backend:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    image: app:backend
+    container_name: phone-numbers-be
+    command: ./mvnw spring-boot:run
+
+  frontend:
+    build:
+      context: ./frontend/
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    image: app:frontend
+    container_name: phone-numbers-fe
+    command: npm start
+
