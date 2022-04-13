@@ -16,16 +16,15 @@ public interface CustomerDao extends JpaRepository<Customer, Integer> {
                     "WHERE phone LIKE %:phone% AND countryCode IN ( " +
                     "SELECT SUBSTR(co.code, 2, 3) as code " +
                     "FROM country co " +
-                    "WHERE co.name LIKE %:country% AND co.code LIKE %:countryCode%)",
+                    "WHERE co.code LIKE %:countryCode%)",
             countQuery = "SELECT COUNT(*), SUBSTR(c.phone, 2, 3) as countryCode " +
                     "FROM customer c " +
                     "WHERE phone LIKE %:phone% AND countryCode IN ( " +
                     "SELECT SUBSTR(co.code, 2, 3) as code " +
                     "FROM country co " +
-                    "WHERE co.name LIKE %:country% AND co.code LIKE %:countryCode%)",
+                    "WHERE co.code LIKE %:countryCode%)",
             nativeQuery = true)
     List<Customer> findAllCustomers(
-            @Param("country") String country,
             @Param("countryCode") String countryCode,
             @Param("phone") String phone);
 }

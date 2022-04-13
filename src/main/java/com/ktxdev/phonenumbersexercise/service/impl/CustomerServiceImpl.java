@@ -25,11 +25,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers(
-            String country,
             String countryCode,
             PhoneState state,
             String phone) {
-        List<Customer> customers = customerDao.findAllCustomers(country, countryCode, phone);
+        List<Customer> customers = customerDao.findAllCustomers(countryCode, phone);
 
         if (nonNull(state) && state.equals(PhoneState.VALID)) {
 

@@ -18,12 +18,11 @@ public class CustomerRestController {
 
     @GetMapping
     public List<Customer> findAll(
-            @RequestParam(required = false, defaultValue = "") String country,
+            @RequestParam(required = false, defaultValue = "") String countryCode,
             @RequestParam(required = false, defaultValue = "") PhoneState state,
-            @RequestParam(required = false,  defaultValue = "") String countryCode,
-            @RequestParam(required = false, defaultValue = "") String phone
+            @RequestParam(required = false,  defaultValue = "") String phone
     ) {
-        return customerService.getAllCustomers(country, countryCode, state, phone);
+        return customerService.getAllCustomers(countryCode, state, phone);
     }
 
 

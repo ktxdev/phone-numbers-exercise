@@ -37,28 +37,26 @@ class CustomerServiceUnitTest {
     void whenGetAllCustomers_thenShouldCallCustomerDaoFindAll() {
         // Given
         String country = "";
-        String countryCode = "";
-        String phone = "";
+        String searchQuery = "";
 
         // When
-        underTest.getAllCustomers(country, countryCode, null, phone);
+        underTest.getAllCustomers(country, null, searchQuery);
 
         // Then
-        verify(customerDao).findAllCustomers(country, countryCode, phone);
+        verify(customerDao).findAllCustomers(country, searchQuery);
     }
 
     @Test
     void givenValidPhoneState_whenGetAllCustomers_shouldReturnCustomersWithValidPhoneNumbers() {
         // Given
         String country = "";
-        String countryCode = "";
-        String phone = "";
+        String searchQuery = "";
         PhoneState state = PhoneState.VALID;
 
         String validPhone = "(237) 673122155";
         String inValidPhone = "(237) 6A0311634";
 
-        when(customerDao.findAllCustomers(country, countryCode, phone))
+        when(customerDao.findAllCustomers(country, searchQuery))
                 .thenReturn(Arrays.asList(
                         new Customer(1, "ARREYMANYOR ROLAND TABOT", "(237) 6A0311634"),
                         new Customer(2, "LOUIS PARFAIT OMBES NTSO", "(237) 673122155")
@@ -70,7 +68,7 @@ class CustomerServiceUnitTest {
                 .thenReturn(false);
 
         // When
-        val customers = underTest.getAllCustomers(country, countryCode, state, phone);
+        val customers = underTest.getAllCustomers(country, state, searchQuery);
 
         // Then
         assertThat(customers.size()).isEqualTo(1);
@@ -82,14 +80,13 @@ class CustomerServiceUnitTest {
     void givenNotValidPhoneState_whenGetAllCustomers_shouldReturnCustomersWithInValidPhoneNumbers() {
         // Given
         String country = "";
-        String countryCode = "";
-        String phone = "";
+        String searchQuery = "";
         PhoneState state = PhoneState.INVALID;
 
         String validPhone = "(237) 673122155";
         String inValidPhone = "(237) 6A0311634";
 
-        when(customerDao.findAllCustomers(country, countryCode, phone))
+        when(customerDao.findAllCustomers(country, searchQuery))
                 .thenReturn(Arrays.asList(
                         new Customer(1, "ARREYMANYOR ROLAND TABOT", "(237) 6A0311634"),
                         new Customer(2, "LOUIS PARFAIT OMBES NTSO", "(237) 673122155")
@@ -101,7 +98,7 @@ class CustomerServiceUnitTest {
                 .thenReturn(false);
 
         // When
-        val customers = underTest.getAllCustomers(country, countryCode, state, phone);
+        val customers = underTest.getAllCustomers(country, state, searchQuery);
 
         // Then
         assertThat(customers.size()).isEqualTo(1);

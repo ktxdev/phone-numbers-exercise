@@ -6,5 +6,5 @@ import com.ktxdev.phonenumbersexercise.models.PhoneState;
 import java.util.List;
 
 public interface CustomerService {
-    List<Customer> getAllCustomers(String country, String countryCode, PhoneState state, String phone);
+    List<Customer> getAllCustomers(String countryCode, PhoneState state, String phone);
 }

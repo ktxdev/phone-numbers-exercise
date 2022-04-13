@@ -46,41 +46,12 @@ class CustomerDaoUnitTest {
     }
 
     @Test
-    void givenExistingCountry_shouldReturnAllCustomersWithPhoneNumbersInThatCountry() {
-        // Given
-        String country = "Zimbabwe";
-
-        // when
-        val customers = underTest.findAllCustomers(country, "", "");
-
-        //then
-        val expectedTotalElements = 2;
-        assertThat(customers.size()).isEqualTo(expectedTotalElements);
-        val actual = customers.get(0);
-        val expectedStartString = "(263)";
-        assertThat(actual.getPhone()).startsWith(expectedStartString);
-    }
-
-    @Test
-    void givenNonExistingCountry_shouldReturnNoCustomers() {
-        // Given
-        String country = "South Africa";
-
-        // when
-        val customers = underTest.findAllCustomers(country, "", "");
-
-        //then
-        val expectedTotalElements = 0;
-        assertThat(customers.size()).isEqualTo(expectedTotalElements);
-    }
-
-    @Test
     void givenExistingCountryCode_shouldReturnAllCustomersWithPhoneNumbersWithThatCountryCode() {
         // Given
         String countryCode = "+263";
 
         // When
-        val customers = underTest.findAllCustomers("", countryCode, "");
+        val customers = underTest.findAllCustomers(countryCode, "");
 
         //then
         val expectedTotalElements = 2;
@@ -93,10 +64,10 @@ class CustomerDaoUnitTest {
     @Test
     void givenNonExistingCountryCode_shouldReturnNoCustomers() {
         // Given
-        String country = "+27";
+        String countryCode = "+27";
 
         // when
-        val customers = underTest.findAllCustomers(country, "", "");
+        val customers = underTest.findAllCustomers(countryCode, "");
 
         //then
         val expectedTotalElements = 0;
@@ -108,7 +79,7 @@ class CustomerDaoUnitTest {
         // given
         String phone = "(263) 773806130";
         // when
-        val customers = underTest.findAllCustomers("", "", phone);
+        val customers = underTest.findAllCustomers("", phone);
 
         //then
         val expectedTotalElements = 1;
@@ -124,7 +95,7 @@ class CustomerDaoUnitTest {
         String phone = "(27) 773876180";
 
         // when
-        val customers = underTest.findAllCustomers("", "", phone);
+        val customers = underTest.findAllCustomers("", phone);
 
         //then
         val expectedTotalElements = 0;
