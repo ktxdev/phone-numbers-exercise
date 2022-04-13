@@ -14,10 +14,8 @@ const App = () => {
   
 
   const fetchCustomers = async (params = undefined) => {
-    console.log(params);
     const response = await getAllCustomers(params);
     setCustomers(response.data)
-    console.log(response.data);
   } 
 
   return (
