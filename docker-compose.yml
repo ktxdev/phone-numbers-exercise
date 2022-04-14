@@ -7,7 +7,7 @@ services:
       - .:/app
     ports:
       - "8080:8080"
-    image: app:backend
+    image: phone-numbers:backend
     container_name: phone-numbers-be
     command: ./mvnw spring-boot:run
 
@@ -18,7 +18,7 @@ services:
       - ./frontend:/app
     ports:
       - "3000:3000"
-    image: app:frontend
+    image: phone-numbers:frontend
     container_name: phone-numbers-fe
     command: npm start
 
